@@ -18,8 +18,14 @@ module.exports = {
             .setFooter({text: 'Last interaction'})
             .setTimestamp();
 
+        const mbListRow = new Discord.MessageActionRow().addComponents(
+            new Discord.MessageButton()
+                .setCustomId("clearMbList")
+                .setLabel("🔁 CLEAR LIST")
+                .setStyle("PRIMARY"));
+
         let listMessageId;
-        await message.channel.send({embeds: [listEmbed]}).then(m => listMessageId = m.id);
+        await message.channel.send({embeds: [listEmbed], components:[mbListRow]}).then(m => listMessageId = m.id);
 
         jsonReader('./server-data.json', (err, data) => {
             if (err) console.log(err);

@@ -86,7 +86,7 @@ module.exports = {
 
         let guild = await client.guilds.fetch(GUILD);
         setTimeout(() => {
-            client.emit('updateMb', client, guild, args, Discord);
+            client.emit('updateMb', client, guild, Discord);
         }, 600);
 
         

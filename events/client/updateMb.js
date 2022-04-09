@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports = {
     name: 'updateMb',
-    async execute(client, guild, args, Discord) {
+    async execute(client, guild, Discord) {
         const serverData = JSON.parse(await fs.readFileSync('./server-data.json'));
 
         let emojiNumbers = [':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':nine:', ':keycap_ten:']
