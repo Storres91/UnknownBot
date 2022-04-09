@@ -11,7 +11,7 @@ module.exports = {
 
             //Clear mb list
             if (interaction.customId == 'clearMbList') {
-                if(!hasAnyOfRoles(interaction, [ROLES.STAFF])) {
+                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) {
                     interaction.reply({
                         content: `Only staff members are allowed to clear the list.`,
                         ephemeral: true
@@ -43,7 +43,7 @@ module.exports = {
 
             //Lock list
             if (interaction.customId == 'lockMbList') {
-                if(!hasAnyOfRoles(interaction, [ROLES.STAFF])) {
+                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) {
                     interaction.reply({
                         content: `Only staff members are allowed to lock the list.`,
                         ephemeral: true
@@ -75,7 +75,7 @@ module.exports = {
 
             //Unlock list
             if (interaction.customId == 'unlockMbList') {
-                if(!hasAnyOfRoles(interaction, [ROLES.STAFF])) {
+                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) {
                     interaction.reply({
                         content: `Only staff members are allowed to unlock the list.`,
                         ephemeral: true

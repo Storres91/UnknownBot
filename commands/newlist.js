@@ -9,7 +9,7 @@ module.exports = {
     description: 'Sends a new embed mb list',
     aliases: ['mblist'],
     async execute(client, message, args, Discord) {
-        if (!hasAnyOfRoles(message, [ROLES.STAFF])) return message.channel.send('You are not allowed to use this command.')
+        if (!hasAnyOfRoles(message, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) return message.channel.send('You are not allowed to use this command.')
 
         const listEmbed = new Discord.MessageEmbed()
             .setTitle('🐉 UNLOCKED MINIBOSS LIST 🐉')

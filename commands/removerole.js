@@ -8,7 +8,7 @@ module.exports = {
     description: 'Removes a role from target',
     aliases: ['roleremove',],
     async execute(client, message, args, Discord) {
-        if (!hasAnyOfRoles(message, [ROLES.STAFF])) return message.channel.send('You are not allowed to use this command.');
+        if (!hasAnyOfRoles(message, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) return message.channel.send('You are not allowed to use this command.');
         if (args.length < 2) return message.channel.send(`Use this command properly! \n**Correct usage:** \`${prefix}${this.name} <role> <user>\``);
 
         const roleId = transformToId(args.slice(-1).join(''));
