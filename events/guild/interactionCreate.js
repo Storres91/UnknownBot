@@ -40,6 +40,70 @@ module.exports = {
                     });
                 }
             }
+
+            //Lock list
+            if (interaction.customId == 'lockMbList') {
+                if(!hasAnyOfRoles(interaction, [ROLES.STAFF])) {
+                    interaction.reply({
+                        content: `Only staff members are allowed to lock the list.`,
+                        ephemeral: true
+                    });
+
+                } else {
+                    jsonReader('./server-data.json', (err, data) => {
+                        if (err) console.log(err);
+                        else {
+                            data.MINIBOSS_LIST.LOCKED = true;
+            
+                            fs.writeFile('./server-data.json', JSON.stringify(data, null, 4), err => {
+                                if (err) console.log(err);
+                            });
+            
+                        }
+                    });
+
+                    setTimeout(() => {
+                        client.emit('updateMb', client, interaction.guild, Discord);
+                    }, 600);
+
+                    interaction.reply({
+                        content: '🔴 List locked!',
+                        ephemeral: true
+                    });
+                }
+            }
+
+            //Unlock list
+            if (interaction.customId == 'unlockMbList') {
+                if(!hasAnyOfRoles(interaction, [ROLES.STAFF])) {
+                    interaction.reply({
+                        content: `Only staff members are allowed to unlock the list.`,
+                        ephemeral: true
+                    });
+
+                } else {
+                    jsonReader('./server-data.json', (err, data) => {
+                        if (err) console.log(err);
+                        else {
+                            data.MINIBOSS_LIST.LOCKED = false;
+            
+                            fs.writeFile('./server-data.json', JSON.stringify(data, null, 4), err => {
+                                if (err) console.log(err);
+                            });
+            
+                        }
+                    });
+
+                    setTimeout(() => {
+                        client.emit('updateMb', client, interaction.guild, Discord);
+                    }, 600);
+
+                    interaction.reply({
+                        content: '🟢 List unlocked!',
+                        ephemeral: true
+                    });
+                }
+            }
         }
     }
 }

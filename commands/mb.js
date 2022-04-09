@@ -4,16 +4,25 @@ const { GUILD } = require('../server-config.json')
 const fs = require('fs');
 
 module.exports = {
-    name: 'mblist',
+    name: 'mb',
     description: 'Manipulate mb list',
     aliases: [''],
     async execute(client, message, args, Discord) {
         let serverData = JSON.parse(await fs.readFileSync('./server-data.json'));
         if (message.channel.id != serverData.MINIBOSS_LIST.CHANNEL) return
+        if (serverData.MINIBOSS_LIST.LOCKED) {
+            try {
+                message.delete(); 
+            } catch (error) {
+                console.log(error);
+            }
+            return
+        }
+
         let userIndex = serverData.MINIBOSS_LIST.USERS_ON_LIST.findIndex(obj => obj.userId == message.author.id);
 
         switch (args[0]) {
-            case 'join':
+            case 'in':
                 if ( userIndex > -1 || isNaN(parseInt(args[1]))) {
                     try {
                         message.delete(); 
@@ -75,6 +84,11 @@ module.exports = {
                 break;
 
             default:
+                try {
+                    message.delete(); 
+                } catch (error) {
+                    console.log(error);
+                }
                 return
         }
 

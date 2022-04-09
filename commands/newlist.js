@@ -7,14 +7,14 @@ const fs = require('fs')
 module.exports = {
     name: 'newlist',
     description: 'Sends a new embed mb list',
-    aliases: [''],
+    aliases: ['mblist'],
     async execute(client, message, args, Discord) {
         if (!hasAnyOfRoles(message, [ROLES.STAFF])) return message.channel.send('You are not allowed to use this command.')
 
         const listEmbed = new Discord.MessageEmbed()
-            .setTitle('🐉 MINIBOSS LIST 🐉')
-            .setDescription('Welcome to '+message.guild.name+' miniboss list!\n\n**INSTRUCTIONS**\n🟢 To join write `'+prefix+'mblist join <level>` Ex. `'+prefix+'mblist join 38`\n🔴 To leave write `'+prefix+'mblist leave` \n\n**LISTED:**\n:one: ---\n:two: ---\n:three: ---\n:four: ---\n:five: ---\n:six: ---\n:seven: ---\n:eight: ---\n:nine: ---\n:keycap_ten: ---')
-            .setColor('#f970f9')
+            .setTitle('🐉 UNLOCKED MINIBOSS LIST 🐉')
+            .setDescription('Welcome to '+message.guild.name+' miniboss list!\n\n**INSTRUCTIONS**\n🟢 To join write `'+prefix+'mb in <level>` Ex. `'+prefix+'mb in 38`\n🔴 To leave write `'+prefix+'mb leave` \n\n**LISTED:**\n:one: ---\n:two: ---\n:three: ---\n:four: ---\n:five: ---\n:six: ---\n:seven: ---\n:eight: ---\n:nine: ---\n:keycap_ten: ---')
+            .setColor('#3ba55c')
             .setFooter({text: 'Last interaction'})
             .setTimestamp();
 
@@ -22,14 +22,26 @@ module.exports = {
             new Discord.MessageButton()
                 .setCustomId("clearMbList")
                 .setLabel("🔁 CLEAR LIST")
-                .setStyle("PRIMARY"));
+                .setStyle("PRIMARY"),
 
+            new Discord.MessageButton()
+                .setCustomId("lockMbList")
+                .setLabel("🔴 LOCK")
+                .setStyle("DANGER"),
+
+            new Discord.MessageButton()
+                .setCustomId("unlockMbList")
+                .setLabel("🟢 UNLOCK")
+                .setStyle("SUCCESS"));
+                
+                
         let listMessageId;
         await message.channel.send({embeds: [listEmbed], components:[mbListRow]}).then(m => listMessageId = m.id);
 
         jsonReader('./server-data.json', (err, data) => {
             if (err) console.log(err);
             else {
+                data.MINIBOSS_LIST.LOCKED = false;
                 data.MINIBOSS_LIST.CHANNEL = message.channel.id;
                 data.MINIBOSS_LIST.MESSAGE = listMessageId;
                 data.MINIBOSS_LIST.USERS_ON_LIST = [];

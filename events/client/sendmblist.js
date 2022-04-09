@@ -25,7 +25,7 @@ module.exports = {
         });
 
         setTimeout(() => {
-            client.emit('updateMb', client, guild, args, Discord);
+            client.emit('updateMb', client, guild, Discord);
         }, 600);
     }
 }
