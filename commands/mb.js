@@ -33,7 +33,7 @@ module.exports = {
                 }
 
                 if (!args[1]) {
-                    message.member.send(`🔴 **ERROR**\nYou weren\'t able to join the list in **${message.guild.name}** because you didn't **specify your level**. \nEx: \`${prefix}${this.name} join <level>\``);
+                    message.member.send(`🔴 **ERROR**\nYou weren\'t able to join the list in **${message.guild.name}** because you didn't **specify your level**. \nEx: \`${prefix}${this.name} in <level>\``);
                     try {
                         message.delete(); 
                     } catch (error) {

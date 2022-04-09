@@ -9,7 +9,7 @@ module.exports = {
     aliases: ['roleremove',],
     async execute(client, message, args, Discord) {
         if (!hasAnyOfRoles(message, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) return message.channel.send('You are not allowed to use this command.');
-        if (args.length < 2) return message.channel.send(`Use this command properly! \n**Correct usage:** \`${prefix}${this.name} <role> <user>\``);
+        if (args.length < 2) return message.channel.send(`Use this command properly! \n**Correct usage:** \`${prefix}${this.name} <user1> <user2> <user3> <user...> <role>\``);
 
         const roleId = transformToId(args.slice(-1).join(''));
         let role, membersList=[];
