@@ -10,7 +10,7 @@ module.exports = {
         let sortedUsers = _.sortBy(serverData.MINIBOSS_LIST.USERS_ON_LIST, 'level').reverse();
         
         let listSendChannel = await guild.channels.fetch(CHANNELS.SEND_MBLIST);
-        listSendChannel.send(`**🐉 Miniboss list is ready!**\n${sortedUsers.slice(1).map(user => `<@${user.userId}>`).join(' ')}\n\n**<@${sortedUsers[0].userId}>! LEVEL ${sortedUsers[0].level}** You are the highest level on this list, here's the command for you!\n\`rpg miniboss ${sortedUsers.slice(1).map(user => `<@${user.userId}>`).join(', ')}\``);
+        listSendChannel.send(`**🐉 Miniboss list is ready!**\n${sortedUsers.slice(1).map(user => `<@${user.userId}>`).join(' ')}\n\n**<@${sortedUsers[0].userId}>! LEVEL ${sortedUsers[0].level}** You are the highest level on this list, here's the command for you!\n\`rpg miniboss ${sortedUsers.slice(1).map(user => `<@${user.userId}>`).join(' ')}\``);
 
         jsonReader('./server-data.json', (err, data) => {
             if (err) console.log(err);

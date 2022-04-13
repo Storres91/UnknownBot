@@ -2,6 +2,7 @@ const { prefix } = require('../bot-config.json');
 const { jsonReader } = require('../utils/jsonManipulation.js');
 const { GUILD } = require('../server-config.json')
 const fs = require('fs');
+const { hasAnyOfRoles } = require('../utils/permsManager');
 
 module.exports = {
     name: 'mb',
@@ -82,6 +83,10 @@ module.exports = {
                 });
 
                 break;
+
+            case 'done':
+                if (!hasAnyOfRoles(message, [serverData.ROLES.HEAD_STAFF, serverData.ROLES.SENIOR_STAFF, serverData.ROLES.JUNIOR_STAFF])) return message.channel.send('You are not allowed to use this command!')
+                return client.emit('mbremove', message, Discord);
 
             default:
                 try {

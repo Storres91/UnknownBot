@@ -28,7 +28,7 @@ module.exports = {
 
         message.channel.send(`Removing **${role.name}** from **${membersList.length} users**.\n**ETA:** ${membersList.length*0.5}s`)
         //Remove role from user
-        let i;
+        let i=0;
         for (let user of membersList) {
             i++;
             setTimeout(() => {

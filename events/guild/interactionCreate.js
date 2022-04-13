@@ -62,12 +62,16 @@ module.exports = {
                         }
                     });
 
+                    interaction.channel.permissionOverwrites.edit(message.guild.everyone.id, {
+                        SEND_MESSAGES: false,
+                    });
+
                     setTimeout(() => {
                         client.emit('updateMb', client, interaction.guild, Discord);
                     }, 600);
 
                     interaction.reply({
-                        content: '🔴 List locked!',
+                        content: '🔴 List and channel locked!',
                         ephemeral: true
                     });
                 }
@@ -94,12 +98,16 @@ module.exports = {
                         }
                     });
 
+                    interaction.channel.permissionOverwrites.edit(message.guild.everyone.id, {
+                        SEND_MESSAGES: true,
+                    });
+
                     setTimeout(() => {
                         client.emit('updateMb', client, interaction.guild, Discord);
                     }, 600);
 
                     interaction.reply({
-                        content: '🟢 List unlocked!',
+                        content: '🟢 List and channel unlocked!',
                         ephemeral: true
                     });
                 }
