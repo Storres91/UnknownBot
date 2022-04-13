@@ -62,7 +62,7 @@ module.exports = {
                         }
                     });
 
-                    interaction.channel.permissionOverwrites.edit(message.guild.everyone.id, {
+                    interaction.channel.permissionOverwrites.edit(interaction.guild.id, {
                         SEND_MESSAGES: false,
                     });
 
@@ -98,7 +98,7 @@ module.exports = {
                         }
                     });
 
-                    interaction.channel.permissionOverwrites.edit(message.guild.everyone.id, {
+                    interaction.channel.permissionOverwrites.edit(interaction.guild.id, {
                         SEND_MESSAGES: true,
                     });
 
