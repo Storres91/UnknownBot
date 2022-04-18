@@ -4,7 +4,7 @@ const fs = require('fs');
 module.exports = {
     name: 'updateMb',
     async execute(client, guild, Discord) {
-        const serverData = JSON.parse(await fs.readFileSync('./server-data.json'));
+        const serverData = await JSON.parse(fs.readFileSync('./server-data.json'));
 
         let emojiNumbers = [':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':nine:', ':keycap_ten:']
         
@@ -31,6 +31,6 @@ module.exports = {
         let embedMessage = await embedChannel.messages.fetch(serverData.MINIBOSS_LIST.MESSAGE).catch(()=>embedChannel.send(`⚠️ Error, I was not able to find the list message, send a new one using \`${prefix}newlist\`.`));
 
         await embedMessage.edit({embeds:[listEmbed]});
-        if(serverData.MINIBOSS_LIST.USERS_ON_LIST.length > 9) client.emit('sendmblist', client, guild, args, Discord);
+        if(serverData.MINIBOSS_LIST.USERS_ON_LIST.length == 10) client.emit('sendmblist', client, guild, Discord);
     }
 }

@@ -5,7 +5,7 @@ const _ = require('lodash');
 
 module.exports = {
     name: 'sendmblist',
-    async execute(client, guild, args, Discord) {
+    async execute(client, guild, Discord) {
         let serverData = JSON.parse(await fs.readFileSync('./server-data.json'));
         let sortedUsers = _.sortBy(serverData.MINIBOSS_LIST.USERS_ON_LIST, 'level').reverse();
         

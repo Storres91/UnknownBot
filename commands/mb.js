@@ -9,7 +9,7 @@ module.exports = {
     description: 'Manipulate mb list',
     aliases: [''],
     async execute(client, message, args, Discord) {
-        let serverData = JSON.parse(await fs.readFileSync('./server-data.json'));
+        let serverData = await JSON.parse(fs.readFileSync('./server-data.json'));
         if (message.channel.id != serverData.MINIBOSS_LIST.CHANNEL) return
         if (serverData.MINIBOSS_LIST.LOCKED) {
             try {

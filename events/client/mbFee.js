@@ -12,8 +12,8 @@ module.exports = {
             time: 1000 * 3
         });
 
-        collector.on('collect', ()=>{
-            if(message.content.includes('300,000,000 coins')) return message.member.roles.add(ROLES.GOD_MB)
+        collector.on('collect', (m)=>{
+            if(m.content.includes('300,000,000 coins')) return message.member.roles.add(ROLES.GOD_MB)
         })
 
     }
