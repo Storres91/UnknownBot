@@ -11,7 +11,7 @@ module.exports = {
 
             //Clear mb list
             if (interaction.customId == 'clearMbList') {
-                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) {
+                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ROLES.MB_HOST, ])) {
                     interaction.reply({
                         content: `Only staff members are allowed to clear the list.`,
                         ephemeral: true
@@ -43,7 +43,7 @@ module.exports = {
 
             //Lock list
             if (interaction.customId == 'lockMbList') {
-                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) {
+                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ROLES.MB_HOST, ])) {
                     interaction.reply({
                         content: `Only staff members are allowed to lock the list.`,
                         ephemeral: true
@@ -62,16 +62,12 @@ module.exports = {
                         }
                     });
 
-                    interaction.channel.permissionOverwrites.edit(interaction.guild.id, {
-                        SEND_MESSAGES: false,
-                    });
-
                     setTimeout(() => {
                         client.emit('updateMb', client, interaction.guild, Discord);
                     }, 600);
 
                     interaction.reply({
-                        content: '🔴 List and channel locked!',
+                        content: '🔴 List locked!',
                         ephemeral: true
                     });
                 }
@@ -79,7 +75,7 @@ module.exports = {
 
             //Unlock list
             if (interaction.customId == 'unlockMbList') {
-                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ])) {
+                if(!hasAnyOfRoles(interaction, [ROLES.JUNIOR_STAFF, ROLES.SENIOR_STAFF, ROLES.HEAD_STAFF, ROLES.MB_HOST, ])) {
                     interaction.reply({
                         content: `Only staff members are allowed to unlock the list.`,
                         ephemeral: true
@@ -98,16 +94,12 @@ module.exports = {
                         }
                     });
 
-                    interaction.channel.permissionOverwrites.edit(interaction.guild.id, {
-                        SEND_MESSAGES: true,
-                    });
-
                     setTimeout(() => {
                         client.emit('updateMb', client, interaction.guild, Discord);
                     }, 600);
 
                     interaction.reply({
-                        content: '🟢 List and channel unlocked!',
+                        content: '🟢 List unlocked!',
                         ephemeral: true
                     });
                 }

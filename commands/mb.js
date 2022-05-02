@@ -85,7 +85,7 @@ module.exports = {
                 break;
 
             case 'done':
-                if (!hasAnyOfRoles(message, [serverData.ROLES.HEAD_STAFF, serverData.ROLES.SENIOR_STAFF, serverData.ROLES.JUNIOR_STAFF])) return message.channel.send('You are not allowed to use this command!')
+                if (!hasAnyOfRoles(message, [serverData.ROLES.HEAD_STAFF, serverData.ROLES.SENIOR_STAFF, serverData.ROLES.JUNIOR_STAFF, serverData.ROLES.MB_HOST, ])) return message.channel.send('You are not allowed to use this command!')
                 return client.emit('mbremove', message, Discord);
 
             default:
