@@ -1,7 +1,7 @@
 const { CHANNELS, ROLES } = require('../../server-config.json')
 const { hasAnyOfRoles, hasAllOfRoles } = require('../../utils/permsManager.js')
 
-const AllRoles = [ROLES.TT0, ROLES.TT1, ROLES.GA_TT1, ROLES.TT2, ROLES.TT3_19, ROLES.GA_TT2_19, ROLES.TT20P, ROLES.GA_TT20P]
+const AllRoles = [ROLES.TT0_1, ROLES.GA_TT1, ROLES.TT2_19, ROLES.GA_TT2_19, ROLES.TT20P, ROLES.GA_TT20P, ROLES.MB1K, ROLES.MB4K, ROLES.MB8K]
 
 module.exports = {
     name: 'ttVerify',
@@ -36,19 +36,19 @@ module.exports = {
             let rolesToGive;
 
             if (ttCount == 0) {
-                rolesToGive = [ROLES.TT0]
+                rolesToGive = [ROLES.TT0_1]
 
             } else if (ttCount == 1) {
-                rolesToGive = [ROLES.TT1, ROLES.GA_TT1, ROLES.SUPER_LIST_MB]
+                rolesToGive = [ROLES.TT0_1, ROLES.GA_TT1, ROLES.MB1K]
 
             } else if (ttCount == 2) {
-                rolesToGive = [ROLES.TT2, ROLES.GA_TT2_19, ROLES.SUPER_LIST_MB, ROLES.ULTRA_LIST_MB]
+                rolesToGive = [ROLES.TT2_19, ROLES.GA_TT2_19, ROLES.MB1K, ROLES.MB4K]
 
             } else if (ttCount > 2 && ttCount < 20) {
-                rolesToGive = [ROLES.TT3_19, ROLES.GA_TT2_19, ROLES.SUPER_LIST_MB, ROLES.ULTRA_LIST_MB, ROLES.LEGENDARY_LIST_MB]
+                rolesToGive = [ROLES.TT2_19, ROLES.GA_TT2_19, ROLES.MB1K, ROLES.MB4K, ROLES.MB8K]
 
             } else {
-                rolesToGive = [ROLES.TT20P, ROLES.GA_TT20P, ROLES.SUPER_LIST_MB, ROLES.ULTRA_LIST_MB, ROLES.LEGENDARY_LIST_MB]
+                rolesToGive = [ROLES.TT20P, ROLES.GA_TT20P, ROLES.MB1K, ROLES.MB4K, ROLES.MB8K]
 
             }
 
