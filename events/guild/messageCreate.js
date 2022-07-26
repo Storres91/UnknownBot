@@ -7,7 +7,7 @@ module.exports = {
 
         //Trigger tt verification
         if (message.channel.id == serverConfig.CHANNELS.ttVerification) return client.emit('ttVerify', message, Discord);
-        if (message.channel.id == serverConfig.CHANNELS.MB_FEE) return client.emit('mbFee', message, Discord);
+        if (message.channel.id == serverConfig.CHANNELS.MB_FEE) client.emit('mbFee', message, Discord);
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
         if (message.channel.type == 'dm') return;
