@@ -26,7 +26,9 @@ module.exports = {
                 return;
             }
 
+            
             ttCount = m.embeds[0].fields[0].value.split(' ').slice(-1).join();
+            if(!m.embeds[0].fields[0].value.toLowerCase().includes('time travels')) ttCount=0
             ttCount = parseInt(ttCount)
 
 
@@ -47,7 +49,7 @@ module.exports = {
             } else if (ttCount > 2 && ttCount < 20) {
                 rolesToGive = [ROLES.TT2_19, ROLES.GA_TT2_19, ROLES.MB1K, ROLES.MB4K, ROLES.MB8K]
 
-            } else {
+            } else if(ttCount>=20){
                 rolesToGive = [ROLES.TT20P, ROLES.GA_TT20P, ROLES.MB1K, ROLES.MB4K, ROLES.MB8K]
 
             }

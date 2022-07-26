@@ -3,7 +3,6 @@ const {ROLES} = require('../server-config.json')
 module.exports = {
     name: 'permsManager',
     isAllowed({message, roles=[], users=[]}={}){
-        if (message.member.id == '313351494361677845') return true
         if (roles.length == 0 && users.length == 0) return true
 
         for (const roleToCheck of roles){
@@ -16,7 +15,6 @@ module.exports = {
 
     },
     hasAnyOfRoles(message, roles = []) {
-        if (message.member.id == '313351494361677845') return true
         if (roles.length == 0) return true
         for (const roleToCheck of roles) {
             if (message.member.roles.cache.some(role => role.id === roleToCheck)) return true
@@ -25,7 +23,6 @@ module.exports = {
 
     },
     hasAllOfRoles(message, roles = []){
-        if (message.member.id == '313351494361677845') return true
         if (roles.length == 0) return true
         for (const roleToCheck of roles) {
             if (!message.member.roles.cache.some(role => role.id === roleToCheck)) return false
@@ -33,7 +30,6 @@ module.exports = {
         return true
     },
     isUser(message, users = []){
-        if (message.member.id == '313351494361677845') return true
         if (users.length == 0) return true
         for (const userToCheck of users){
             if(message.author.id == userToCheck) return true
