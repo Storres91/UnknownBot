@@ -1,4 +1,4 @@
 node_modules/
 .eslint.json
 .env
-.zip
+*.zip
