@@ -5,7 +5,7 @@ const debtDataModel = require('../models/debtSchema.js');
 
 module.exports = {
     name: 'remove',
-    description: 'Adds debt to an user',
+    description: 'Removes debt from an user',
     aliases: [''],
     async execute(client, message, args, Discord) {
         if(args[0] != 'debt') return;
@@ -43,7 +43,9 @@ module.exports = {
 
             if(i.customId == 'debtRemoveAll') debtToRemove = debtData.debtAmount;
             if(i.customId == 'debtRemoveHalf') debtToRemove = debtData.debtAmount/2;
-            command = `\`rpg give <@299015816572043265> ${debtToRemove}b\``;
+            if(hasAnyOfRoles(message,[serverData.ROLES.TT20P])) command = `\`rpg give <@313351494361677845> ${debtToRemove}b\``;
+            else command = `\`rpg give <@707788113677647944> ${debtToRemove}b\``;
+            
             message.channel.send(command)
             message.channel.send('Copy and paste the command as it is or the bot won\'t be able to detect the payment.')
             i.message.delete();

@@ -50,13 +50,12 @@ module.exports = {
                     }
                     
                     debtData.save();
-                    message.channel.send(`Added **${debt}b** to **${member.user.tag}'s** debt.\n Total: **${debtData.debtAmount}b**.`);
                     if(debtData.debtAmount>=5) {
-                        message.channel.send(`**${member.user.tag}** has more than 5b in debt, restricted access to mb channels.`);
                         member.roles.add(ROLES.MB_BANNED)
                     }
 
                 }
+                message.channel.send(`Added **${debt}b** debt to: \n${membersList.map(member=>member.user.username +'\n')}Check your debt with \`-debt\``);
 
                 break;
         
